@@ -37,14 +37,14 @@ Variables and constants are special in SecLang as they inherently security class
 Variables are declared using the syntax:
 
 ```SecLang
-type variableName : SecurityClass = value;
+type variableName : SecurityClass = value
 ```
 
 Example:
 
 ```SecLang
-int x : S = 10;
-bool flag : U = true;
+int x : S = 10
+bool flag : U = true
 const string constant='SecLang'
 ```
 #### 2.3 Assignment
@@ -57,7 +57,7 @@ SecLang supports common operators for arithmetic, and comparisons. Also Expressi
 Example:
 
 ```SecLang
-int result = x + 5 * 2;
+int result = x + 5 * 2
 bool isValid = result==5
 string greetings='HelloWorld'
 greetings=greetings/2
