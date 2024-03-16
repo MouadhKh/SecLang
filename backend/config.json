@@ -1,0 +1,4 @@
+{
+    "environment":"prod",
+    "supported_channels": ["Unclassified", "Confidential", "Secret", "TopSecret"]
+  }
