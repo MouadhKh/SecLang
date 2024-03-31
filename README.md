@@ -1,9 +1,10 @@
-**SecLang Developer's Guide**
+**Getting Started with SecLang**
 
 *Version 1.0*
 
 ### Table of Contents
-[1. Introduction](#1-introduction)  
+
+[1. Setup and Usage](#1-setup-and-usage)  
 [2. Language Basics](#2-language-basics)  
    1. [Data Types](#21-data-types)  
    2. [Variables and Constants](#22-variables-and-constants)  
@@ -17,9 +18,51 @@
 [4. Channels](#4-channels)  
 [5. Special Keywords](#5-special-keywords)
 
-### 1. Introduction
+***
 
-Welcome to the SecLang Developer's Guide! SecLang is a security-focused domain-specific language designed to provide explicit and implicit information flow control. This guide will walk you through the fundamental aspects of the language, empowering you to write secure code and harness SecLang's powerful features.
+### 1. Setup and Usage
+SecLang Web Interpreter is an educational tool designed to teach information flow security concepts using the SecLang programming language. SecLang is a programming language, created in the context of my master project, that incorporates information flow security concepts directly into its syntax, bridging the gap between theoretical knowledge and practical application.
+
+### Prerequisites
+-   **Deno**: Make sure you have Deno installed. You can download it from [Deno's official website](https://deno.land/).
+- **Node.js and npm**: For the frontend part of the application, you need Node.js and npm. You can download them from [Node.js official website](https://nodejs.org/).
+
+### How to Run
+
+1.  **Clone the Repository:**
+      
+    `git clone git@github.com:MouadhKh/SecLang.git`
+    
+3.  **Run the Frontend:**
+From the project's root directory run the following commands   
+    `cd frontend`     
+    `npm install`
+    `npm run dev` 
+    
+    The frontend will be served on `http://localhost:3000`.
+    
+4.  **Run the Backend:**
+    
+From the project's root directory and run the following command  
+    `cd backend`  
+    `deno run --allow-write --allow-read api/app.ts`
+    
+ The backend server will start on `http://localhost:8000.
+ 
+ **Make sure the backend application run on the defined port(8000)**
+ 
+**Run the SecLang Interpreter Locally:**
+  - Edit `config.json` and set the `environment` property to `dev`(it is prod by default).
+  - Follow the instructions in `main.ts`
+  - Run the following command in the project root directory:
+   `deno run --allow-write --allow-read main.ts`
+### How to Test
+There are already two test suites for SecLang(the language not the web application) that you can run 
+- For error handling tests:
+`deno test --allow-read --allow-write test/error_handling.tests.ts`
+
+- For channels tests:
+```deno test --allow-read --allow-write test/channels.tests.ts```
 
 ### 2. Language Basics
 
@@ -47,7 +90,7 @@ int x : S = 10
 bool flag : U = true
 const string constant='SecLang'
 ```
-#### 2.3 Assignment
+#### 2.3 Assignments
 Assignments should respect the information flow policy. Information flow x->y is only permissible if the security class of y is at least equal to x's.
 
 #### 2.4 Operators and Expressions
@@ -110,7 +153,7 @@ string x:U=read('Secret')
 close('Secret')
 ```
  
-#### 5.Special keywords
+#### 5. Special Keywords
 
 SecLang support logging only constant values or `Unclassified` variables/constants. The used syntax is `debug 'SecLang greets you!'`
 
